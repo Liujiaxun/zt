@@ -2,14 +2,13 @@
   <div class="Layout">
     <a-layout id="components-layout-demo-fixed">
         <a-layout-header >
-          <div class="logo">
-          </div>
+          <div class="logo"></div>
           <div class='header-right'>
               <div class='userBox header-box'>
                   <div class='photo'>
                     <img src="../assets/img/u14.png" alt="">
                   </div>
-                  admin
+                  {{$t('common.changeLanguage')}}
               </div>
               <div class='header-box' @click='goHome'>
                   <div class='photo'>
@@ -85,6 +84,9 @@ export default {
       showFooter:true,
       activeKey:'1'
     }
+  },
+  mounted(){
+    this.$i18n.locale = 'zh'
   },
   watch:{
     GETTABSACTIVEKEY:function(n,o){
