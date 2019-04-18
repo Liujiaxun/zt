@@ -15,7 +15,6 @@ Vue.use(antDesignVue);
 Vue.use(VueI18n)
 
 import axios from './core/axios'
-
 // 注册i18n实例并引入语言文件，文件格式等下解析
 const i18n = new VueI18n({
   locale: 'zh',
@@ -27,6 +26,8 @@ const i18n = new VueI18n({
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
+process.env.MOCK && require('./mock')
+
 router.beforeEach((to, from, next) => {
   const ZTTOKEN = SStorage.get('ZTTOKEN') || null;
   if (to.matched.some(record => record.meta.requiresAuth)) {

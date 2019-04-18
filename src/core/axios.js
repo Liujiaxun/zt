@@ -1,11 +1,9 @@
 import axios from 'axios';
 import {message,notification} from 'ant-design-vue'
 import { SStorage } from '../core/util'
-axios.defaults.baseURL = 'http://192.168.109.223:8000/';
-// http://192.168.109.223:8000/
+!process.env.MOCK ? axios.defaults.baseURL = 'http://192.168.109.223:8000/api/v1/' :f=>f;
 axios.defaults.headers.common['Authorization'] = '';
-// axios.defaults.headers['Content-Type'] = 'application/json';
-// axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+
 axios.defaults.headers['Content-Type'] = 'application/json'
 // axios.defaults.timeout = 5000;
 // 添加请求拦截器

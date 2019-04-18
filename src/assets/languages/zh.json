@@ -1,6 +1,7 @@
 {
     "common": {
-      "changeLanguage": "English"
+      "changeLanguage": "English",
+      "logOut":"退出登录"
     },
     "menu": {
         "home": "首页",

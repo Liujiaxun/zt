@@ -3,30 +3,7 @@
     <a-layout id="components-layout-demo-fixed">
         <a-layout-header >
           <div class="logo"></div>
-          <div class='header-right'>
-              <div class='userBox header-box'>
-                  <div class='photo'>
-                    <img src="../assets/img/u14.png" alt="">
-                  </div>
-                  {{$t('common.changeLanguage')}}
-              </div>
-              <div class='header-box' @click='goHome'>
-                  <div class='photo'>
-                    <img src="../assets/img/u132.png" alt="返回首页" title='返回首页'>
-                  </div>
-              </div>
-              <div class='messageBox header-box'>
-                <span class="layui-badge tag">99</span>
-                  <div class='photo'>
-                    <img src="../assets/img/u141.png" alt="消息" title='消息'>
-                  </div>
-              </div>
-              <div class='header-box' @click='logout'>
-                  <div class='photo'>
-                    <img src="../assets/img/u149.png" alt="退出登录" title='退出登录'>
-                  </div>
-              </div>
-          </div>
+          <HeaderTool @goHome='goHome' @logout='logout' />
           <a-menu
             theme="dark"
             mode="horizontal"
@@ -71,13 +48,15 @@
   </div>
 </template>
 <script>
+import ApiPath from '../core/ApiPath'
 import { mapGetters } from 'vuex'
 import { GETTABS,GETTABSACTIVEKEY,ADDTABS,REMOVETABS,SETTABSACTIVEKEY  } from '../store/types';
 import {SStorage} from '../core/util';
 import menu from '../core/menu';
+import HeaderTool from './common/HeaderTool'
 export default {
   name: 'Layout',
-  components:{},
+  components:{HeaderTool},
   data () {
     return {
       menu,
@@ -87,6 +66,9 @@ export default {
   },
   mounted(){
     this.$i18n.locale = 'zh'
+    this.$http.get(ApiPath.user.getUserInfo).then(res=>{
+      console.log(res);
+    })
   },
   watch:{
     GETTABSACTIVEKEY:function(n,o){
@@ -206,37 +188,4 @@ export default {
   font-size 12px;
   &:hover
     color:#3bb19c;
-.header-right
-  float:right
-  height 100%;
-  .header-box
-    margin-left: 10px;
-    margin-right: 5px;
-    padding: 0px 10px;
-    cursor pointer
-    float:left
-    &:first-child
-      margin-left:0;
-    &:last-child
-      margin-right:0;
-  .userBox
-    padding-left:40px;
-    position relative
-    color:#fff;
-    font-size:18px;
-    .photo
-      position:absolute;
-      left: 0;
-  .messageBox
-    width: 50px;
-    text-align center
-    padding:0;
-    position relative
-    .tag
-      position absolute
-      top:15px;
-      border-radius: 20px;
-    img 
-      margin-top:2px;
-
 </style>

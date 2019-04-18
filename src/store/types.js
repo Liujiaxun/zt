@@ -8,7 +8,7 @@ export const SETTABSACTIVEKEY = 'SETTABSACTIVEKEY' ;//设置tabs选中的key
 
 
 
-//getters-types
+//getters-types 
 export const GETTABS = 'GETTABS' ;//获取tabs
 export const GETTABSACTIVEKEY = 'GETTABSACTIVEKEY' ;//获取tabsactivekey
 
